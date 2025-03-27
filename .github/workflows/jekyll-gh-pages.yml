@@ -39,11 +39,8 @@ jobs:
         run: script/bootstrap
       - name: Install Assets
         run: yarn run assets:install
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
+      - name: Run build
+        run: yarn run build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
       - name: Upload artifact
