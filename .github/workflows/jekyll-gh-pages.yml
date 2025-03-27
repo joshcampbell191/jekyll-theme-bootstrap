@@ -1,5 +1,5 @@
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+name: Deploy Jekyll with GitHub Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -28,6 +28,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Ruby, JRuby and TruffleRuby
+        uses: ruby/setup-ruby@v1.213.0
+        with:
+          ruby-version: '3.0' # Not needed with a .ruby-version file
+          cache-version: 0 # Increment this number if you need to re-download cached gems
       - name: Setup Pages
         uses: actions/configure-pages@v5      
       - name: Run bootstrap
